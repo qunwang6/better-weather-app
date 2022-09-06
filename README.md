@@ -1,6 +1,6 @@
 # MyWeather weather app
 
-Custom weather app with OpenWeatherMap API
+Custom weather app using the OpenWeatherMap OneCall API and Geocoding API.
 
 ## HTML
 
