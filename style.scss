@@ -429,6 +429,22 @@ footer {
     }
 }
 
+.weather-alert{
+    font-weight: 500;
+    margin: .75rem 0;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    border: .125rem solid var(--red);
+
+    dl{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
 /* -------------------------- Hourly weather -------------------------- */
 
 .hourly-weather{
