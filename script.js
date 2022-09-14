@@ -359,11 +359,11 @@ function setWeatherData(weatherData) {
     let rainVolume = 1000 * 1000 * weatherData.hourly[0].rain["1h"] / 1000000;
 
     if (weatherData.hourly[0].rain) {
-        currentPop.parentNode.setAttribute('onclick', 'triggerToast("Probability of precipitation", "' + Math.round(weatherData.hourly[0].pop * 100) + ' % | ' + rainVolume + ' l/m²")');
+        currentPop.parentNode.setAttribute('onclick', 'triggerToast("POP", "' + Math.round(weatherData.hourly[0].pop * 100) + ' % | ' + rainVolume + ' l/m²")');
     } else if (weatherData.hourly[0].snow) {
-        currentPop.parentNode.setAttribute('onclick', 'triggerToast("Probability of precipitation", "' + Math.round(weatherData.hourly[0].pop * 100) + ' % | ' + weatherData.hourly[0].snow["1h"] + ' mm")');
+        currentPop.parentNode.setAttribute('onclick', 'triggerToast("POP", "' + Math.round(weatherData.hourly[0].pop * 100) + ' % | ' + weatherData.hourly[0].snow["1h"] + ' mm")');
     } else {
-        currentPop.parentNode.setAttribute('onclick', 'triggerToast("Probability of precipitation", "' + Math.round(weatherData.hourly[0].pop * 100) + ' %")');
+        currentPop.parentNode.setAttribute('onclick', 'triggerToast("POP", "' + Math.round(weatherData.hourly[0].pop * 100) + ' %")');
     }
 
     // UV Index
