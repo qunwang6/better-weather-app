@@ -523,7 +523,7 @@ footer {
             .daily-temperature {
                 font-size: 2.5rem;
                 line-height: 1;
-                margin: 0 .75rem;
+                margin: 0 .125rem 0 .75rem;
                 font-weight: 600;
         
                 &::after {
@@ -551,26 +551,20 @@ footer {
             }
         
             ul {
+                width: 20%;
+
                 li {
                     display: flex;
                     align-items: center;
         
                     img {
-                        margin-right: .25rem;
+                        margin-right: .125rem;
                         opacity: .6;
                     }
         
                     .daily-pop,
                     .daily-wind {
                         opacity: .6;
-                    }
-        
-                    .daily-pop::after {
-                        content: ' %';
-                    }
-        
-                    .daily-wind::after {
-                        content: ' km/h';
                     }
                 }
             }

@@ -426,12 +426,13 @@ function setWeatherData(weatherData) {
         const dailyTemperatureMin = dailyWeatherItemClone.querySelector('.daily-temperature-min');
         dailyTemperatureMin.innerText = Math.round(weatherData.daily[i].temp.min);
 
-        // POP & Wind
+        // POP
         const dailyPop = dailyWeatherItemClone.querySelector('.daily-pop');
-        dailyPop.innerText = Math.round(weatherData.daily[i].pop * 100);
-
+        dailyPop.innerText = `${Math.round(weatherData.daily[i].pop * 100)} %`;
+        
+        // Wind
         const dailyWind = dailyWeatherItemClone.querySelector('.daily-wind');
-        dailyWind.innerText = Math.round(weatherData.daily[i].wind_speed * 3.6);
+        dailyWind.innerText = `${Math.round(weatherData.daily[i].wind_speed * 3.6)} km/h`;
 
         // Add toast
         let toastTitle = getDay(weatherData.daily[i].dt, weatherData.timezone_offset); // Day
