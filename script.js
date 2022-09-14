@@ -357,9 +357,8 @@ function setWeatherData(weatherData) {
     const currentPop = weatherTemplateClone.content.querySelector('.current-pop-value');
     currentPop.innerText = Math.round(weatherData.hourly[0].pop * 100);
 
-    let rainVolume = 1000 * 1000 * weatherData.hourly[0].rain["1h"] / 1000000;
-
     if (weatherData.hourly[0].rain) {
+        let rainVolume = 1000 * 1000 * weatherData.hourly[0].rain["1h"] / 1000000;
         currentPop.parentNode.setAttribute('onclick', 'triggerToast("POP", "' + Math.round(weatherData.hourly[0].pop * 100) + ' % | ' + rainVolume + ' l/m²")');
     } else if (weatherData.hourly[0].snow) {
         currentPop.parentNode.setAttribute('onclick', 'triggerToast("POP", "' + Math.round(weatherData.hourly[0].pop * 100) + ' % | ' + weatherData.hourly[0].snow["1h"] + ' mm")');
