@@ -8,7 +8,6 @@
 
 :root {
     background-color: #05051A;
-    background-image: radial-gradient(closest-corner, #080826, #05051A);
     background-attachment: fixed;
     background-size: contain;
     --yellow: #FFCC00;
@@ -324,6 +323,43 @@ footer {
 
 .current-weather {
     padding: 0 .75rem;
+
+    .current-weather-video{
+        background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        video{
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+        }
+
+        &::after{
+            content: "";
+            display: block;
+            background-image: linear-gradient(rgba(#05051A,1) 0%, rgba(#05051A,0.1) 50%, rgba(#05051A,1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        &::before{
+            content: "";
+            display: block;
+            background-image: linear-gradient(90deg, rgba(#05051A,1) 0%, rgba(#05051A,0.1) 50%, rgba(#05051A,1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+    }
 
     .current-temperature {
         background-image: radial-gradient(closest-side, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0));
