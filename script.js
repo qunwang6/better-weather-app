@@ -27,7 +27,6 @@ if (localStorage.getItem('myWeatherLastUpdate')) {
 /* -------------------- Locations Settings Dialog  -------------------- */
 
 const locationSettingsTemplate = document.querySelector('#settings-location-item');
-const dropTemplate = document.querySelector('#drop-template');
 const locationList = document.querySelector('#location-list');
 
 function createLocationList() {
