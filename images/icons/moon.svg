@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="a" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <circle id="b" data-name="Ellipse 130" cx="12" cy="12" r="9" fill="#f4ebc8"/>
-  <path id="c" data-name="Differenzmenge 7" d="M12,20c-4.42,0-8-3.58-8.01-7.99,0-3.15,1.84-6,4.71-7.3-1.82,4.03-.03,8.77,4,10.58,1.04,.47,2.16,.71,3.3,.71,1.14,0,2.26-.24,3.29-.71-1.3,2.86-4.15,4.7-7.29,4.71Z" isolation="isolate" opacity=".03"/>
-  <circle id="d" data-name="Ellipse 134" cx="16.66" cy="9.48" r=".99" isolation="isolate" opacity=".03"/>
-  <circle id="e" data-name="Ellipse 135" cx="14.07" cy="10.94" r=".68" isolation="isolate" opacity=".03"/>
-  <circle id="f" data-name="Ellipse 168" cx="15.73" cy="14.26" r=".68" isolation="isolate" opacity=".03"/>
-  <circle id="g" data-name="Ellipse 166" cx="10.69" cy="9.85" r=".31" isolation="isolate" opacity=".03"/>
-  <circle id="h" data-name="Ellipse 170" cx="15.05" cy="6.73" r=".31" isolation="isolate" opacity=".03"/>
-  <circle id="i" data-name="Ellipse 167" cx="17.65" cy="12.55" r=".31" isolation="isolate" opacity=".03"/>
-  <circle id="j" data-name="Ellipse 171" cx="12.77" cy="13.28" r=".31" isolation="isolate" opacity=".03"/>
-  <circle id="k" data-name="Ellipse 136" cx="11" cy="6.42" r="1.04" isolation="isolate" opacity=".03"/>
-</svg>
+<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" fill="#f4ebc8" r="9"/><path d="m12 20c-4.42 0-8-3.58-8.01-7.99 0-3.15 1.84-6 4.71-7.3-1.82 4.03-.03 8.77 4 10.58 1.04.47 2.16.71 3.3.71s2.26-.24 3.29-.71c-1.3 2.86-4.15 4.7-7.29 4.71z" opacity=".03"/><circle cx="16.66" cy="9.48" opacity=".03" r=".99"/><circle cx="14.07" cy="10.94" opacity=".03" r=".68"/><circle cx="15.73" cy="14.26" opacity=".03" r=".68"/><circle cx="10.69" cy="9.85" opacity=".03" r=".31"/><circle cx="15.05" cy="6.73" opacity=".03" r=".31"/><circle cx="17.65" cy="12.55" opacity=".03" r=".31"/><circle cx="12.77" cy="13.28" opacity=".03" r=".31"/><circle cx="11" cy="6.42" opacity=".03" r="1.04"/></svg>
