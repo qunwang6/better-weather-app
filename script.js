@@ -705,7 +705,3 @@ function setWindDirection(degrees, deg) {
         return deg ? degrees + '°' : 'NNW';
     }
 }
-
-function flipCard(e) {
-    e.target.classList.toggle('flipped');
-}
