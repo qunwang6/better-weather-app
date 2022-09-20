@@ -440,7 +440,7 @@ footer {
         margin-bottom: -25%;
         grid-area: sun;
         transform-style: preserve-3d;
-        transition: transform .5s ease-in-out;
+        transition: transform .3s ease-out;
 
         &.flipped{
             transform: rotateX(180deg);
