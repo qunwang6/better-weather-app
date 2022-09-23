@@ -67,6 +67,10 @@ a {
 
 ul {
     list-style: none;
+
+    li.card{
+        background-color: rgba(#fff, .04) !important;
+    }
 }
 
 dl{
@@ -160,6 +164,10 @@ dl{
     padding: 0 2rem;
     transition: left .3s ease-in-out;
 
+    &.open{
+        left: 0 !important;
+    }
+
     h2{
         text-align: center;
         margin-top: 1rem;
@@ -179,10 +187,6 @@ dl{
     &#add-dialog{
         left: -100%;
         will-change: left;    
-    }
-
-    &.open{
-        left: 0 !important;
     }
 }
 
@@ -449,6 +453,7 @@ footer {
 
     .current-sun,
     .current-moon {
+        height: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
