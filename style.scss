@@ -328,11 +328,11 @@ footer {
 
 .weather-alert{
     font-weight: 500;
-    margin: .75rem 0;
+    margin: -3rem 0 1.5rem 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: .75rem;
-    border: .125rem solid var(--red);
 
     p.alert-value{
         text-transform: capitalize;
@@ -387,7 +387,7 @@ footer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: 2rem 0 5rem;
+        margin: 0 0 5rem;
 
         .current-weather-icon {
             width: 33%;
