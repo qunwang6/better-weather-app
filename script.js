@@ -1,4 +1,4 @@
-const apiKey = 'ce74a593068c612e5bc8451997f2fb81';
+const apiKey = 'YOUR API KEY HERE';
 
 /* -------------------- Get data from local storage  -------------------- */
 
