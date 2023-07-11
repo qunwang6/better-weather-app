@@ -30,7 +30,7 @@ body {
     color: #fff;
     position: relative;
     letter-spacing: .02rem;
-    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0));
+    padding: .5rem 0 calc(4.5rem + env(safe-area-inset-bottom, 0)) 0;
 }
 
 button {
