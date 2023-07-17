@@ -334,8 +334,8 @@ footer {
     justify-content: center;
     gap: .75rem;
 
-    p.alert-value{
-        text-transform: capitalize;
+    p.alert-value::first-letter{
+        text-transform: uppercase;
     }
 }
 
