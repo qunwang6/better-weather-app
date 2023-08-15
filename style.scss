@@ -1,3 +1,7 @@
+$yellow: #FFCC00;
+$red: #E7324C;
+$blue: #3CABF8;
+
 /* -------------------------- Base -------------------------- */
 
 * {
@@ -10,9 +14,9 @@
     background-color: #05051A;
     background-attachment: fixed;
     background-size: contain;
-    --yellow: #FFCC00;
-    --red: #E7324C;
-    --blue: #3CABF8;
+    --yellow: $yellow;
+    --red: $red;
+    --blue: $blue;
     --wind-direction: 0;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -94,30 +98,38 @@ dl{
 
 /* -------------------------- Helpers -------------------------- */
 
+.overlay{
+    background-color: rgba(#05051A,.8) !important;
+    backdrop-filter: brightness(.2) blur(8px);
+}
+
 .card {
     border-radius: .5rem;
     background-color: #121226;
     padding: 1rem;
 }
 
+/* -------------------------- Toast -------------------------- */
+
 .toast{
-    width: calc(100vw - 1.5rem);
+    @extend .overlay;
+    width: calc(100vw - 2rem);
     position: fixed;
     bottom: 1rem;
     z-index: 999999;
-    background-color: rgba(#000, .95);
-    padding: 1.25rem;
-    margin: 0 .75rem;
+    padding: 1rem;
+    margin: 0 1rem;
     animation-name: toast;
     animation-duration: 3.5s;
     animation-timing-function: ease-in-out;
+    border: 1px solid rgba($blue, .4);
 
     &.warning{
-        border: 1px solid var(--yellow);
+        border: 1px solid rgba($yellow, .4);
     }
 
     &.error{
-        border: 1px solid var(--red);
+        border: 1px solid rgba($red, .4);
     }
 
     dl{
@@ -150,16 +162,15 @@ dl{
 /* -------------------------- Dialog -------------------------- */
 
 .dialog{
+    @extend .overlay;
     height: 100vh;
     width: 100vw;
     overflow-y: auto;
-    background-color: rgba(#05051A, .8);
     position: fixed;
     top: 0;
     z-index: 999999;
     padding: 0 .75rem;
     transition: left .3s ease-in-out;
-    backdrop-filter: blur(8px);
 
     &.open{
         left: 0 !important;
