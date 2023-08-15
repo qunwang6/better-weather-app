@@ -100,7 +100,7 @@ dl{
 
 .overlay{
     background-color: rgba(#05051A,.8) !important;
-    backdrop-filter: brightness(.2) blur(8px);
+    backdrop-filter: brightness(.4) blur(8px);
 }
 
 .card {
@@ -122,7 +122,6 @@ dl{
     animation-name: toast;
     animation-duration: 3.5s;
     animation-timing-function: ease-in-out;
-    border: 1px solid rgba($blue, .4);
 
     &.warning{
         border: 1px solid rgba($yellow, .4);
