@@ -101,13 +101,13 @@ dl{
 }
 
 .toast{
-    width: calc(100vw - 3rem);
+    width: calc(100vw - 1.5rem);
     position: fixed;
     bottom: 1rem;
     z-index: 999999;
     background-color: rgba(#000, .95);
     padding: 1.25rem;
-    margin: 0 1.5rem;
+    margin: 0 .75rem;
     animation-name: toast;
     animation-duration: 3.5s;
     animation-timing-function: ease-in-out;
