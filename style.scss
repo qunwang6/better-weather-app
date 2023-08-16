@@ -296,7 +296,7 @@ main {
 
         header{
             padding: 0;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
         }
 
         section {
@@ -357,7 +357,7 @@ footer {
     .current-weather-video{
         width: 100%;
         position: absolute;
-        top: 0;
+        top: 4rem;
         left: 0;
         z-index: -1;
 
@@ -417,6 +417,10 @@ footer {
             font-size: 80%;
             font-weight: 400;
         }
+    }
+
+    .current-time{
+        opacity: .8;
     }
 
     .current-weather-data {
