@@ -3,25 +3,11 @@ const apiKey = 'ce74a593068c612e5bc8451997f2fb81';
 /* -------------------- Get data from local storage  -------------------- */
 
 let locationArr = [];
-let weatherArr = [];
-let lastUpdate = 0;
 
 if (localStorage.getItem('myWeatherLocationArr')) {
     locationArr = JSON.parse(localStorage.getItem('myWeatherLocationArr'));
 } else {
     localStorage.setItem('myWeatherLocationArr', JSON.stringify(locationArr));
-}
-
-if (localStorage.getItem('myWeatherWeatherArr')) {
-    weatherArr = JSON.parse(localStorage.getItem('myWeatherWeatherArr'));
-} else {
-    localStorage.setItem('myWeatherWeatherArr', JSON.stringify(weatherArr));
-}
-
-if (localStorage.getItem('myWeatherLastUpdate')) {
-    lastUpdate = localStorage.getItem('myWeatherLastUpdate');
-} else {
-    localStorage.setItem('myWeatherLastUpdate', lastUpdate);
 }
 
 /* -------------------- Locations Settings Dialog  -------------------- */
@@ -47,12 +33,6 @@ function createLocationList() {
             e.currentTarget.parentNode.remove();
             // Remove from locationArr
             locationArr.splice(locationArr.indexOf(locationArr[i]));
-            // Remove from weatherArr
-            weatherArr.forEach(weatherItem => function (i) {
-                if (weatherItem.lat === locationArr[i].lat && weatherItem.lon === locationArr[i].lon) {
-                    weatherArr.splice(weatherArr.indexOf(weatherItem), 1);
-                }
-            });
         });
     }
 }
@@ -266,39 +246,27 @@ function closeDialog(e) {
 
 let weatherLocationName;
 
-function getData(locationArr) {
+function getData(locationArr, counter = 0) {
+    fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + locationArr[counter].lat + '&lon=' + locationArr[counter].lon + '&appid=' + apiKey + '&units=metric&exclude=minutely')
+    .then((response) => response.json())
+    .then((weatherData) => {
+        // Set location name for headline
+        weatherLocationName = locationArr[counter].name;
 
-    for (let i = 0; i < locationArr.length; i++) {
-        // Get weather data
-        fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + locationArr[i].lat + '&lon=' + locationArr[i].lon + '&appid=' + apiKey + '&units=metric&exclude=minutely')
-        .then((response) => response.json())
-        .then((weatherData) => {
-            // Set location name for headline
-            weatherLocationName = locationArr[i].name;
-            
-            console.log(weatherLocationName);
-            console.log(weatherData);
+        console.log(weatherLocationName);
+        console.log(weatherData);
 
-            // Update lastUpdate value
-            lastUpdate = weatherData.current.dt;
-            localStorage.setItem('myWeatherLastUpdate', lastUpdate);
+        // Set data in the app
+        setWeatherData(weatherData);
 
-            // Add or update weather data
-            for (let i = 0; i < weatherArr.length; i++) {
-                if (weatherArr[i].lat === weatherData.lat && weatherArr[i].lon === weatherData.lon) {
-                    weatherArr[i] = weatherData;
-                    dataAdded = true;
-                } else {
-                    weatherArr.push(weatherData);
-                }
-            }
-
-            localStorage.setItem('myWeatherWeatherArr', JSON.stringify(weatherArr));
-
-            // Set data in the app
-            setWeatherData(weatherData);
-        });
-    }
+        // Get data when there are more locations
+        if (counter < locationArr.length) {
+            counter++;
+            getData(locationArr, counter);
+        } else {
+            counter = 0;
+        }
+    });
 }
 
 /* -------------------- Enliven template with data  -------------------- */
