@@ -14,9 +14,9 @@ $blue: #3CABF8;
     background-color: #05051A;
     background-attachment: fixed;
     background-size: contain;
-    --yellow: $yellow;
-    --red: $red;
-    --blue: $blue;
+    --yellow: #FFCC00;
+    --red: #E7324C;
+    --blue: #3CABF8;
     --wind-direction: 0;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -217,6 +217,11 @@ form{
 
         &:invalid{
             border-bottom: 2px solid var(--red);
+        }
+
+        &::placeholder{
+            color: #fff;
+            opacity: .4;
         }
 
         &[type="search"]{
