@@ -156,9 +156,9 @@ function geolocationSuccess(position) {
     fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&limit=1&appid=' + apiKey)
     .then((response) => response.json())
     .then((locationData) => {
-
         // Get weather data for geolocation when location is not saved
         if (!JSON.stringify(locationArr).includes(locationData[0].lat) && !JSON.stringify(locationArr).includes(locationData[0].lon)) {
+            locationData[0].name = `📍 ${locationData[0].name}`;
             getData(locationData);
         }
 
@@ -260,7 +260,7 @@ function getData(locationArr, counter = 0) {
         setWeatherData(weatherData);
 
         // Get data when there are more locations
-        if (counter < locationArr.length) {
+        if (counter < locationArr.length - 1) {
             counter++;
             getData(locationArr, counter);
         } else {
