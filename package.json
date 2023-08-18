@@ -25,6 +25,7 @@
   "homepage": "https://github.com/bgebelein/my-weather#readme",
   "dependencies": {
     "html-minifier": "^4.0.0",
+    "purify-css": "^1.2.5",
     "uglify-js": "^3.17.4"
   }
 }
