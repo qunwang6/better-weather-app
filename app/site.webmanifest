@@ -1,6 +1,7 @@
 {
-    "name": "MyWeather",
-    "short_name": "MyWeather",
+    "name": "Better Weather App",
+    "short_name": "Better Weather App",
+    "start_url": "/",
     "icons": [
         {
             "src": "images/favicon/android-chrome-192x192.png",
