@@ -4,10 +4,11 @@
   "description": "My personal weather app as PWA.",
   "main": "index.html",
   "scripts": {
-    "build": "npm run removecss && npm run minifyjs && npm run minifyhtml",
-    "removecss": "purifycss 'app/style.min.css' 'app/index.html' 'app/script.js' -m -o 'public/style.min.css'",
-    "minifyjs": "uglifyjs 'app/script.js' -o 'public/script.js'",
-    "minifyhtml": "html-minifier --input-dir app --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html"
+    "create-copy": "cpy . '!style.scss' '../../public' --cwd=app",
+    "remove-css": "purifycss 'public/style.min.css' 'public/index.html' 'public/script.js' -m -o 'public/style.min.css'",
+    "minify-js": "uglifyjs 'public/script.js' -o 'public/script.js'",
+    "minify-html": "html-minifier --input-dir public --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html",
+    "build": "npm run create-copy && npm run remove-css && npm run minify-js && npm run minify-html"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/bgebelein/my-weather#readme",
   "dependencies": {
+    "cpy-cli": "^5.0.0",
     "html-minifier": "^4.0.0",
     "purify-css": "^1.2.5",
     "uglify-js": "^3.17.4"
