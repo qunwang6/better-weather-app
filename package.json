@@ -1,0 +1,30 @@
+{
+  "name": "my-weather",
+  "version": "1.0.0",
+  "description": "My personal weather app as PWA.",
+  "main": "index.html",
+  "scripts": {
+    "build": "npm run removecss && npm run minifyjs && npm run minifyhtml",
+    "removecss": "purifycss 'style.min.css' 'index.html' 'script.js' -m -o 'style.min.css'",
+    "minifyjs": "uglifyjs 'script.js' -o 'script.js'",
+    "minifyhtml": "html-minifier --input-dir . --output-dir . --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgebelein/my-weather.git"
+  },
+  "keywords": [
+    "weather",
+    "app"
+  ],
+  "author": "Bent Gebelein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgebelein/my-weather/issues"
+  },
+  "homepage": "https://github.com/bgebelein/my-weather#readme",
+  "dependencies": {
+    "html-minifier": "^4.0.0",
+    "uglify-js": "^3.17.4"
+  }
+}
