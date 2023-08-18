@@ -1,7 +1,7 @@
 {
   "name": "my-weather",
   "version": "1.0.0",
-  "description": "My personal weather app as PWA.",
+  "description": "MyWeather is a modern weather app with a simple yet beautiful UI. Made with ♥ by Bent Gebelein, powered by openweathermap.org",
   "main": "index.html",
   "scripts": {
     "create-copy": "cpy . '!style.scss' '../../public' --cwd=app",
