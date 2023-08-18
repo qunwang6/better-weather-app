@@ -40,11 +40,11 @@
 
 <body>
     <header>
-        <button id="add-button" data-dialog-target="add-dialog">
-            <img src="images/icons/add.svg" height="24" width="24">
+        <button id="add-button" aria-label="Add location" title="Add location" data-dialog-target="add-dialog">
+            <img src="images/icons/add.svg" height="24" width="24" alt="Plus icon">
         </button>
-        <button id="settings-button" data-dialog-target="settings-dialog">
-            <img src="images/icons/settings.svg" height="24" width="24">
+        <button id="settings-button" aria-label="Settings" title="Settings" data-dialog-target="settings-dialog">
+            <img src="images/icons/settings.svg" height="24" width="24" alt="Cog icon">
         </button>
     </header>
 
@@ -59,8 +59,9 @@
 
     <div id="settings-dialog" class="dialog">
         <header>
-            <button id="close-dialog" onclick="closeDialog(this)"><img src="images/icons/arrow-left.svg" height="24"
-                    width="24" alt="Back icon" /></button>
+            <button class="close-dialog" onclick="closeDialog(this)">
+                <img src="images/icons/arrow-left.svg" height="24" width="24" alt="Back icon" />
+            </button>
             <h2>Settings</h2>
         </header>
 
@@ -71,13 +72,16 @@
 
     <div id="add-dialog" class="dialog">
         <header>
-            <button id="close-dialog" onclick="closeDialog(this)"><img src="images/icons/arrow-left.svg" height="24"
-                    width="24" alt="Back icon" /></button>
+            <button class="close-dialog" onclick="closeDialog(this)">
+                <img src="images/icons/arrow-left.svg" height="24" width="24" alt="Back icon" />
+            </button>
             <h2>Add Location</h2>
         </header>
         <form id="search-form">
             <input id="search" type="search" minlength="2" placeholder="Search…" />
-            <button type="submit"><img src="images/icons/search.svg" height="24" width="24" alt="Search icon" /></button>
+            <button type="submit">
+                <img src="images/icons/search.svg" height="24" width="24" alt="Search icon" />
+            </button>
         </form>
         <ul id="location-search-reults">
 
@@ -93,7 +97,7 @@
                 <dd></dd>
             </dl>
             <button>
-                <img src="images/icons/add.svg" height="24" width="24" />
+                <img src="images/icons/add.svg" height="24" width="24" alt="Plus icon" />
             </button>
         </li>
     </template>
@@ -102,10 +106,10 @@
 
     <template id="settings-location-item">
         <li class="card" data-location-lat="" data-location-lon="" draggable="true">
-            <img src="images/icons/drag-handle.svg" height="24" width="24" />
+            <img src="images/icons/drag-handle.svg" height="24" width="24" alt="Drag Handle icon" />
             <span class="location-name"></span>
             <button>
-                <img src="images/icons/delete.svg" height="24" width="24" />
+                <img src="images/icons/delete.svg" height="24" width="24" alt="Trash can icon" />
             </button>
         </li>
     </template>
@@ -147,7 +151,7 @@
                 </div>
 
                 <div class="current-temperature">
-                    <img class="current-weather-icon" alt="Current temperature icon" />
+                    <img class="current-weather-icon" alt="Current temperature icon" height="120" width="120" />
                     <h2 class="current-temperature-value"></h2>
                 </div>
 
@@ -162,8 +166,7 @@
                             </div>
                             <div class="current-sunposition">
                                 <div class="current-sunposition-progress"></div>
-                                <img class="current-sunposition-indicator" src="images/icons/sun.svg" height="24"
-                                    width="24" />
+                                <img class="current-sunposition-indicator" src="images/icons/sun.svg" height="24" width="24" alt="Sun icon" />
                             </div>
                             <div class="current-sunset">
                                 <img src="images/icons/sun-set.svg" height="40" width="40" alt="Sunset icon" />
@@ -178,8 +181,7 @@
                             </div>
                             <div class="current-sunposition">
                                 <div class="current-moonposition-progress"></div>
-                                <img class="current-moonposition-indicator" src="images/icons/moon.svg" height="24"
-                                    width="24" />
+                                <img class="current-moonposition-indicator" src="images/icons/moon.svg" height="24" width="24" alt="Moon icon" />
                             </div>
                             <div class="current-moonset">
                                 <img src="images/icons/moon-set.svg" height="40" width="40" alt="Moonset icon" />
@@ -261,16 +263,26 @@
                             <img src="images/icons/clear-sky-day.svg" height="40" width="40" alt="Daily weather Icon" />
                             <p class="daily-temperature"></p>
                             <ul>
-                                <li><img src="images/icons/arrow-up.svg" height="16" width="16" /><span class="daily-temperature-max"></span></li>
-                                <li><img src="images/icons/arrow-down.svg" height="16" width="16" /><span class="daily-temperature-min"></span></li>
+                                <li>
+                                    <img src="images/icons/arrow-up.svg" height="16" width="16" alt="Arrow up icon" />
+                                    <span class="daily-temperature-max"></span>
+                                </li>
+                                <li>
+                                    <img src="images/icons/arrow-down.svg" height="16" width="16" alt="Arrow down icon" />
+                                    <span class="daily-temperature-min"></span>
+                                </li>
                             </ul>
                         </div>
 
                         <ul>
-                            <li><img src="images/icons/pop.svg" height="16" width="16" /><span class="daily-pop"></span>
+                            <li>
+                                <img src="images/icons/pop.svg" height="16" width="16" alt="Umbrella icon" />
+                                <span class="daily-pop"></span>
                             </li>
-                            <li><img src="images/icons/wind-speed.svg" height="16" width="16" /><span
-                                    class="daily-wind"></span></li>
+                            <li>
+                                <img src="images/icons/wind-speed.svg" height="16" width="16" alt="Windsock icon" />
+                                <span class="daily-wind"></span>
+                            </li>
                         </ul>
                     </li>
                 </ul>
