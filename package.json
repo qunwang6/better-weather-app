@@ -5,9 +5,9 @@
   "main": "index.html",
   "scripts": {
     "build": "npm run removecss && npm run minifyjs && npm run minifyhtml",
-    "removecss": "purifycss 'style.min.css' 'index.html' 'script.js' -m -o 'style.min.css'",
-    "minifyjs": "uglifyjs 'script.js' -o 'script.js'",
-    "minifyhtml": "html-minifier --input-dir . --output-dir . --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html"
+    "removecss": "purifycss 'app/style.min.css' 'app/index.html' 'app/script.js' -m -o 'public/style.min.css'",
+    "minifyjs": "uglifyjs 'app/script.js' -o 'public/script.js'",
+    "minifyhtml": "html-minifier --input-dir app --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html"
   },
   "repository": {
     "type": "git",
