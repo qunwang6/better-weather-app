@@ -294,11 +294,22 @@
     </template>
 
     <!-- iOS PWA INSTALL POP-UP TEMPLATE -->
-    <div id="ios-pwa-popup" class="card">
-        <p><strong>Install this webapp on your iPhone:</strong></p>
-        <p>Tap <img src="images/icons/ios-share.svg" height="24" width="24" alt="iOS share icon" /> and then "Add to home".</p>
-        <div class="triangle-down"></div>
-    </div>
+    <template id="ios-popup-template">
+        <div id="ios-pwa-popup" class="pwa-popup card">
+            <p><strong>Install this webapp on your iPhone:</strong></p>
+            <p>Tap <img src="images/icons/ios-share.svg" height="24" width="24" alt="iOS share icon" /> and then "Add to home".</p>
+            <div class="triangle-down"></div>
+        </div>
+    </template>
+    
+
+    <!-- android PWA INSTALL POP-UP TEMPLATE -->
+    <template id="android-popup-template">
+        <div id="android-pwa-popup" class="pwa-popup card">
+            <p><strong>Install this webapp on your Phone:</strong></p>
+            <p>Tap <img src="images/icons/android-more.svg" height="24" width="24" alt="Android more icon" /> and then "Install App".</p>
+        </div>
+    </template>
 
     <!-- Custom JS -->
     <script src="script.js"></script>
