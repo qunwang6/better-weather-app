@@ -689,7 +689,7 @@ footer {
     right: .75rem;
     z-index: 99999;
     animation-name: toast;
-    animation-duration: 5.8s;
+    animation-duration: 6s;
     animation-timing-function: ease-in-out;
 }
 
@@ -751,13 +751,6 @@ footer {
         & + p{
             margin-top: .5rem;
         }
-    }
-
-    &::after{
-        content: "↗";
-        position: absolute;
-        top: .75rem;
-        right: .75rem;
     }
 }
 
