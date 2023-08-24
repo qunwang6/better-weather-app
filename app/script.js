@@ -525,6 +525,12 @@ function triggerToast(title, description, type = 'info') {
     }, 3500);
 };
 
+/* -------------------- Trigger iOS PWA install pop-up  -------------------- */
+
+setTimeout(function () {
+    document.querySelector('#ios-pwa-popup').remove();
+}, 6000);
+
 /* -------------------- Helpers -------------------- */
 
 function getHoursAndMinutes(timestamp, offset) {
