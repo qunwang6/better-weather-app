@@ -168,7 +168,7 @@ dl{
     overflow-y: auto;
     position: fixed;
     top: 0;
-    z-index: 9999;
+    z-index: 99;
     padding: 0 1rem;
     transition: left .3s ease-in-out;
 
@@ -286,7 +286,7 @@ header{
 
     button{
         position: relative;
-        z-index: 99;
+        z-index: 9;
     }
 }
 
@@ -687,7 +687,7 @@ footer {
     position: fixed;
     left: .75rem;
     right: .75rem;
-    z-index: 99999;
+    z-index: 9999;
     animation-name: toast;
     animation-duration: 6s;
     animation-timing-function: ease-in-out;
