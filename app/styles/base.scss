@@ -1,0 +1,109 @@
+/* -------------------------- Base -------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    background-color: #05051A;
+    background-attachment: fixed;
+    background-size: contain;
+    --yellow: #FFCC00;
+    --red: #E7324C;
+    --blue: #3CABF8;
+    --wind-direction: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    color: #fff;
+    scroll-behavior: smooth;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
+    color: #fff;
+    position: relative;
+    letter-spacing: .02rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    line-height: 0;
+}
+
+*[draggable=true]{
+    cursor: grab;
+
+    &:active{
+        cursor: grabbing;
+    }
+}
+
+/* -------------------------- Typo -------------------------- */
+
+h2{
+    margin: 2.5rem 0 .75rem 0;
+    display: block;
+    width: 100%;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+a {
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+dl{
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: 1.125rem;
+
+    dt{
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    dd{
+        opacity: .8;
+        font-weight: 300;
+    }
+}
+
+/* -------------------------- Helpers -------------------------- */
+
+.text-red{
+    color: var(--red);
+}
+
+.overlay{
+    background-color: rgba(#05051A,.8) !important;
+    backdrop-filter: brightness(.4) blur(8px);
+}
+
+.card {
+    border-radius: .5rem;
+    background-color: #121226;
+    padding: 1rem;
+}
