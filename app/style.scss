@@ -11,6 +11,7 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 0 .75rem;
+    margin-top: env(safe-area-inset-top, 0);
 
     button{
         position: relative;
@@ -79,6 +80,7 @@ footer {
     width: 100%;
     text-align: center;
     padding: 1rem 0;
+    margin-bottom: env(safe-area-inset-bottom, 0);
 }
 
 /* -------------------------- Current location -------------------------- */
