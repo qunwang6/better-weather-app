@@ -112,8 +112,7 @@ footer {
     .current-weather-video{
         width: 100%;
         position: absolute;
-        top: 4rem;
-        left: 0;
+        top: 0;
         z-index: -1;
 
         video{
@@ -130,12 +129,10 @@ footer {
             left: 0;
             height: 100%;
             width: 100%;
-        }
-
-        &::after{
             background-image:
-                linear-gradient(rgba(#05051A,1) 0%, rgba(#05051A,0.1) 50%, rgba(#05051A,1) 100%),
-                linear-gradient(90deg, rgba(#05051A,1) 0%, rgba(#05051A,0.1) 50%, rgba(#05051A,1) 100%);
+                linear-gradient(rgba(#05051A,1) 5%, rgba(#05051A,0) 50%, rgba(#05051A,1) 95%),
+                linear-gradient(90deg, rgba(#05051A,1) 5%, rgba(#05051A,0) 50%, rgba(#05051A,1) 95%),
+                radial-gradient(rgba(#05051A,0) 0%, rgba(#05051A,1) 100%);
         }
     }
 
