@@ -498,7 +498,7 @@ function setWeatherData(weatherData) {
     document.querySelector('main').appendChild(weatherTemplateClone.content.querySelector('article'), true);
 
     // Render map
-    weatherData.current.rain ? setMap(currentPopMap.id) : null;
+    weatherData.current.rain || weatherData.hourly[0].pop > 0.5 ? setMap(currentPopMap.id) : null;
 }
 
 /* -------------------- Leaflet JS  -------------------- */
