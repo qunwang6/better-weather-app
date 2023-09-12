@@ -402,6 +402,12 @@ function setWeatherData(weatherData) {
     currentUvIndex.innerText = weatherData.current.uvi;
     currentUvIndex.parentNode.setAttribute('onclick', 'triggerToast("UV Index", "' + weatherData.current.uvi + '")');
 
+    // Map
+    const currentPopMap = weatherTemplateClone.content.querySelector('#map');
+    currentPopMap.id = `${weatherData.lat}-${weatherData.lon}-map`;
+    currentPopMap.setAttribute('data-lat', weatherData.lat);
+    currentPopMap.setAttribute('data-lon', weatherData.lon);
+
     // Set hourly weather data
     const hourlyWeatherList = weatherTemplateClone.content.querySelector('.hourly-weather-list');
 
@@ -490,6 +496,48 @@ function setWeatherData(weatherData) {
 
     // Add clone to DOM
     document.querySelector('main').appendChild(weatherTemplateClone.content.querySelector('article'), true);
+
+    // Render map
+    weatherData.current.rain ? setMap(currentPopMap.id) : null;
+}
+
+/* -------------------- Leaflet JS  -------------------- */
+
+const zoomLvl = 9;
+
+function setMap(Id){
+    // Define Esri Layer
+    let esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Powered by Esri.',
+        maxZoom: zoomLvl
+    });
+
+    // Define Open Weather Map Layer (precipitation)
+    let owm = L.tileLayer(`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
+        maxZoom: zoomLvl
+    });
+
+    // Render Map
+    let map = L.map(Id, {
+        center: [document.getElementById(Id).dataset.lat, document.getElementById(Id).dataset.lon],
+        zoom: zoomLvl,
+        minZoom: zoomLvl,
+        maxZoom: zoomLvl,
+        zoomControl: false,
+        dragging: false,
+        boxZoom: false,
+        layers: [esri, owm]
+    });
+
+    // Define map marker icon
+    var markerIcon = L.icon({
+        iconUrl: 'images/icons/map-marker-alt.svg',
+        iconSize:     [40, 40],
+        iconAnchor:   [20, 40]
+    });    
+
+    // Add marker to map
+    L.marker([document.getElementById(Id).dataset.lat, document.getElementById(Id).dataset.lon], {icon: markerIcon}).addTo(map);
 }
 
 /* -------------------- Handle Toast  -------------------- */

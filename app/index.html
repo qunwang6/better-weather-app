@@ -161,7 +161,6 @@
                 <div class="current-weather-data">
 
                     <div class="sun-moon">
-
                         <div class="current-sun card">
                             <div class="current-sunrise">
                                 <img src="images/icons/sun-rise.svg" height="40" width="40" alt="Sunrise icon" />
@@ -238,6 +237,8 @@
                         <p class="current-uvindex-value"></p>
                     </div>
                 </div>
+
+                <div id="map" class="map"></div>
             </section>
 
             <!-- HOURLY WEATHER SECTION -->
@@ -310,10 +311,12 @@
         </div>
     </template>
 
-    <!-- Custom JS -->
-    <script src="script.js"></script>
     <!-- QuickFix: Drag'n'drop polyfill for mobile -->
     <script id="DragDropTouch" src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 
 </body>
 
