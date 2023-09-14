@@ -524,8 +524,10 @@ function setMap(Id){
         minZoom: zoomLvl,
         maxZoom: zoomLvl,
         zoomControl: false,
+        scrollWheelZoom: false,
         dragging: false,
         boxZoom: false,
+        interactive: false,
         layers: [esri, owm]
     });
 
