@@ -286,7 +286,8 @@ footer {
         }
 
         .leaflet-layer.owm-layer{
-            filter: saturate(80);
+            filter: saturate(80) hue-rotate(-30deg);
+            mix-blend-mode: plus-lighter;
         }
     }
 }
