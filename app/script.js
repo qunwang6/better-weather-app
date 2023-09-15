@@ -405,8 +405,6 @@ function setWeatherData(weatherData) {
     // Map
     const currentPopMap = weatherTemplateClone.content.querySelector('#map');
     currentPopMap.id = `${weatherData.lat}-${weatherData.lon}-map`;
-    currentPopMap.setAttribute('data-lat', weatherData.lat);
-    currentPopMap.setAttribute('data-lon', weatherData.lon);
 
     // Set hourly weather data
     const hourlyWeatherList = weatherTemplateClone.content.querySelector('.hourly-weather-list');
@@ -498,14 +496,14 @@ function setWeatherData(weatherData) {
     document.querySelector('main').appendChild(weatherTemplateClone.content.querySelector('article'), true);
 
     // Render map
-    weatherData.current.rain || weatherData.hourly[0].pop > 0.75 ? setMap(currentPopMap.id) : null;
+    weatherData.current.rain || weatherData.hourly[0].pop > 0.75 ? setMap(currentPopMap.id, weatherData.lat, weatherData.lon, true) : setMap(currentPopMap.id, weatherData.lat, weatherData.lon, false);
 }
 
 /* -------------------- Leaflet JS  -------------------- */
 
 const zoomLvl = 9;
 
-function setMap(Id){
+function setMap(Id, lat, lon, type){
     // Define Esri Layer
     let esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Powered by Esri.',
@@ -513,15 +511,17 @@ function setMap(Id){
         className: 'esri-layer'
     });
 
+    type === true ? type = 'precipitation_new' : type = 'clouds_new';
+
     // Define Open Weather Map Layer (precipitation)
-    let owm = L.tileLayer(`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
+    let owm = L.tileLayer(`https://tile.openweathermap.org/map/${type}/{z}/{x}/{y}.png?appid=${apiKey}`, {
         maxZoom: zoomLvl,
         className: 'owm-layer'
     });
 
     // Render Map
     let map = L.map(Id, {
-        center: [document.getElementById(Id).dataset.lat, document.getElementById(Id).dataset.lon],
+        center: [lat, lon],
         zoom: zoomLvl,
         minZoom: zoomLvl,
         maxZoom: zoomLvl,
@@ -541,7 +541,7 @@ function setMap(Id){
     });    
 
     // Add marker to map
-    L.marker([document.getElementById(Id).dataset.lat, document.getElementById(Id).dataset.lon], {icon: markerIcon}).addTo(map);
+    L.marker([lat, lon], {icon: markerIcon}).addTo(map);
 }
 
 /* -------------------- Handle Toast  -------------------- */
