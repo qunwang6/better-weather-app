@@ -403,8 +403,8 @@ function setWeatherData(weatherData) {
     currentUvIndex.parentNode.setAttribute('onclick', 'triggerToast("UV Index", "' + weatherData.current.uvi + '")');
 
     // Map
-    const currentPopMap = weatherTemplateClone.content.querySelector('#map');
-    currentPopMap.id = `${weatherData.lat}-${weatherData.lon}-map`;
+    const currentWeatherMap = weatherTemplateClone.content.querySelector('#map');
+    currentWeatherMap.id = `${weatherData.lat}-${weatherData.lon}-map`;
 
     // Set hourly weather data
     const hourlyWeatherList = weatherTemplateClone.content.querySelector('.hourly-weather-list');
@@ -496,7 +496,7 @@ function setWeatherData(weatherData) {
     document.querySelector('main').appendChild(weatherTemplateClone.content.querySelector('article'), true);
 
     // Render map
-    weatherData.current.rain || weatherData.hourly[0].pop > 0.75 ? setMap(currentPopMap.id, weatherData.lat, weatherData.lon, true) : setMap(currentPopMap.id, weatherData.lat, weatherData.lon, false);
+    weatherData.current.rain || weatherData.hourly[0].pop > 0.75 ? setMap(currentWeatherMap.id, weatherData.lat, weatherData.lon, true) : setMap(currentWeatherMap.id, weatherData.lat, weatherData.lon, false);
 }
 
 /* -------------------- Leaflet JS  -------------------- */
