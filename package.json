@@ -8,7 +8,7 @@
     "remove-css": "purifycss 'public/style.min.css' 'public/index.html' 'public/script.js' -m -o 'public/style.min.css'",
     "minify-js": "uglifyjs 'public/script.js' -o 'public/script.js'",
     "minify-html": "html-minifier --input-dir public --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html",
-    "build": "npm run create-copy && npm run remove-css && npm run minify-js && npm run minify-html"
+    "build": "npm run create-copy && npm run minify-js && npm run minify-html"
   },
   "repository": {
     "type": "git",
