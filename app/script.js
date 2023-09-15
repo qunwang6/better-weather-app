@@ -509,12 +509,14 @@ function setMap(Id){
     // Define Esri Layer
     let esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Powered by Esri.',
-        maxZoom: zoomLvl
+        maxZoom: zoomLvl,
+        className: 'esri-layer'
     });
 
     // Define Open Weather Map Layer (precipitation)
     let owm = L.tileLayer(`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
-        maxZoom: zoomLvl
+        maxZoom: zoomLvl,
+        className: 'owm-layer'
     });
 
     // Render Map

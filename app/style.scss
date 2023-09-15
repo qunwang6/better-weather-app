@@ -281,8 +281,12 @@ footer {
             display: none;
         }
 
-        .leaflet-tile-pane{
-            filter: contrast(2) brightness(135%) saturate(4);
+        .leaflet-layer.esri-layer{
+            filter: contrast(2) brightness(125%) saturate(4);
+        }
+
+        .leaflet-layer.owm-layer{
+            filter: contrast(2) saturate(80);
         }
     }
 }
