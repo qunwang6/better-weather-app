@@ -1,8 +1,8 @@
 .pwa-popup {
     display: none;
+    width: calc(100% - 1.5rem);
     position: fixed;
-    left: .75rem;
-    right: .75rem;
+    left: 50%;
     z-index: 9999;
     animation-name: toast;
     animation-duration: 6s;
