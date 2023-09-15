@@ -1,34 +1,34 @@
 {
-  "name": "my-weather",
+  "name": "better-weather-app",
   "version": "1.0.0",
-  "description": "MyWeather is a modern weather app with a simple yet beautiful UI. Made with ♥ by Bent Gebelein, powered by openweathermap.org",
+  "description": "Better Weather App is a modern weather app with a simple yet beautiful UI. Made with ♥ by Bent Gebelein, powered by openweathermap.org",
   "main": "index.html",
   "scripts": {
     "create-copy": "cpy . '!style.scss' '../../public' --cwd=app",
-    "remove-css": "purifycss 'public/style.min.css' 'public/index.html' 'public/script.js' -m -o 'public/style.min.css'",
     "minify-js": "uglifyjs 'public/script.js' -c drop_console=true -o 'public/script.js'",
     "minify-html": "html-minifier --input-dir public --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html",
     "build": "npm run create-copy && npm run minify-js && npm run minify-html"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bgebelein/my-weather.git"
+    "url": "git+https://github.com/bgebelein/better-weather-app.git"
   },
   "keywords": [
     "weather",
-    "app"
+    "app",
+    "leaflet js",
+    "openweathermap"
   ],
   "author": "Bent Gebelein",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bgebelein/my-weather/issues"
+    "url": "https://github.com/bgebelein/better-weather-app/issues"
   },
-  "homepage": "https://github.com/bgebelein/my-weather#readme",
+  "homepage": "https://github.com/bgebelein/better-weather-app#readme",
   "dependencies": {
     "cpy-cli": "^5.0.0",
     "html-minifier": "^4.0.0",
     "leaflet": "^1.9.4",
-    "purify-css": "^1.2.5",
     "uglify-js": "^3.17.4"
   }
 }
