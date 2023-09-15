@@ -286,7 +286,7 @@ footer {
         }
 
         .leaflet-layer.owm-layer{
-            filter: contrast(2) saturate(80);
+            filter: saturate(80);
         }
     }
 }
