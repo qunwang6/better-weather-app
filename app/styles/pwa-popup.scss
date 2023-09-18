@@ -3,7 +3,7 @@
     width: calc(100% - 1.5rem);
     position: fixed;
     left: 50%;
-    z-index: 400;
+    z-index: 1000;
     animation-name: toast;
     animation-duration: 6s;
     animation-timing-function: ease-in-out;
