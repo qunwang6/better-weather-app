@@ -367,12 +367,12 @@ function setWeatherData(weatherData) {
 
     const currentWindDirection = weatherTemplateClone.content.querySelector('.current-wind-direction-value');
     currentWindDirection.innerText = setWindDirection(weatherData.current.wind_deg, false);
-    currentWindDirection.parentNode.setAttribute('onclick', 'triggerToast("Winddirection", "' + setWindDirection(weatherData.current.wind_deg, false) + ' | ' + setWindDirection(weatherData.current.wind_deg, true) + '")');
+    currentWindDirection.parentNode.setAttribute('onclick', `triggerToast("Winddirection", "${setWindDirection(weatherData.current.wind_deg)} | ${weatherData.current.wind_deg}°")`);
 
     // Wind Speed
     const currentWindSpeed = weatherTemplateClone.content.querySelector('.current-wind-speed-value');
     currentWindSpeed.innerText = Math.round(weatherData.current.wind_speed * 3.6);
-    currentWindSpeed.parentNode.setAttribute('onclick', 'triggerToast("Windspeed", "' + Math.round(weatherData.current.wind_speed * 3.6) + ' km/h") | ' + getBeaufortScale(weatherData.current.wind_speed));
+    currentWindSpeed.parentNode.setAttribute('onclick', `triggerToast("Windspeed", "${Math.round(weatherData.current.wind_speed * 3.6)} km/h | ${getWindForce(weatherData.current.wind_speed).beaufort} (${getWindForce(weatherData.current.wind_speed).description})")`);
 
     // Pressure
     const currentPressure = weatherTemplateClone.content.querySelector('.current-pressure-value');
@@ -400,7 +400,7 @@ function setWeatherData(weatherData) {
     // UV Index
     const currentUvIndex = weatherTemplateClone.content.querySelector('.current-uvindex-value');
     currentUvIndex.innerText = weatherData.current.uvi;
-    currentUvIndex.parentNode.setAttribute('onclick', 'triggerToast("UV Index", "' + weatherData.current.uvi + '")');
+    currentUvIndex.parentNode.setAttribute('onclick', 'triggerToast("UV Index", "' + weatherData.current.uvi + ' | ' + getUvIndexDescription(weatherData.current.uvi) + '")');
 
     // Map
     const currentWeatherMap = weatherTemplateClone.content.querySelector('#map');
@@ -544,6 +544,37 @@ function setMap(Id, lat, lon, type) {
     L.marker([lat, lon], { icon: markerIcon }).addTo(map);
 }
 
+/* -------------------- Handle Toast  -------------------- */
+
+function triggerToast(title, description, type = 'info') {
+    // Clone template
+    const toastTemplate = document.querySelector('#toast-template');
+    let toastTemplateClone = toastTemplate.cloneNode(true).content.querySelector('.toast');
+
+    // Set title or icon
+    if (type === 'info') {
+        toastTemplateClone.classList.add('info')
+        toastTemplateClone.querySelector('dl dt').innerHTML = '<img src="images/icons/info.svg" height="24" width="24" alt="Info icon" /> ' + title;
+    } else if (type === 'warning') {
+        toastTemplateClone.classList.add('warning')
+        toastTemplateClone.querySelector('dl dt').innerHTML = '<img src="images/icons/warning.svg" height="24" width="24" alt="Warning icon" /> ' + title;
+    } else if (type === 'error') {
+        toastTemplateClone.classList.add('error')
+        toastTemplateClone.querySelector('dl dt').innerHTML = '<img src="images/icons/error.svg" height="24" width="24" alt="Error icon" /> ' + title;
+    } else {
+        toastTemplateClone.querySelector('.toast dl dt').innerText = title;
+    }
+
+    toastTemplateClone.querySelector('dl dd').innerText = description;
+
+    // Add toast to body
+    document.querySelector('body').appendChild(toastTemplateClone, true);
+
+    setTimeout(function () {
+        document.querySelector('.toast').remove();
+    }, 3500);
+};
+
 /* -------------------- Trigger PWA install pop-ups  -------------------- */
 
 // User Agent is Android
@@ -575,37 +606,6 @@ if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
         document.querySelector('#ios-pwa-popup').remove();
     }, 6000);
 }
-
-/* -------------------- Handle Toast  -------------------- */
-
-function triggerToast(title, description, type = 'info') {
-    // Clone template
-    const toastTemplate = document.querySelector('#toast-template');
-    let toastTemplateClone = toastTemplate.cloneNode(true).content.querySelector('.toast');
-
-    // Set title or icon
-    if (type === 'info') {
-        toastTemplateClone.classList.add('info')
-        toastTemplateClone.querySelector('dl dt').innerHTML = '<img src="images/icons/info.svg" height="24" width="24" alt="Info icon" /> ' + title;
-    } else if (type === 'warning') {
-        toastTemplateClone.classList.add('warning')
-        toastTemplateClone.querySelector('dl dt').innerHTML = '<img src="images/icons/warning.svg" height="24" width="24" alt="Warning icon" /> ' + title;
-    } else if (type === 'error') {
-        toastTemplateClone.classList.add('error')
-        toastTemplateClone.querySelector('dl dt').innerHTML = '<img src="images/icons/error.svg" height="24" width="24" alt="Error icon" /> ' + title;
-    } else {
-        toastTemplateClone.querySelector('.toast dl dt').innerText = title;
-    }
-
-    toastTemplateClone.querySelector('dl dd').innerText = description;
-
-    // Add toast to body
-    document.querySelector('body').appendChild(toastTemplateClone, true);
-
-    setTimeout(function () {
-        document.querySelector('.toast').remove();
-    }, 3500);
-};
 
 /* -------------------- Date / Time -------------------- */
 
@@ -657,143 +657,210 @@ function mapPercentageValue(min, max, value) {
     }
 }
 
-/* -------------------- Convert wind data -------------------- */
+/* -------------------- Convert UV Index into human readable values -------------------- */
 
-function getBeaufortScale(windspeed) {
-    if (windspeed === 0) {
-        return 0;
+function getUvIndexDescription(uvindex) {
+    uvindex = Math.round(uvindex);
+
+    if (uvindex >= 0 && uvindex <= 2) {
+        return 'Low';
     }
 
-    if (windspeed === 1) {
-        return 1;
+    if (uvindex >= 3 && uvindex <= 5) {
+        return 'Moderate';
     }
 
-    if (windspeed >= 2 && windspeed <= 3) {
-        return 2;
+    if (uvindex >= 6 && uvindex <= 7) {
+        return 'High';
     }
 
-    if (windspeed >= 4 && windspeed <= 5) {
-        return 3;
+    if (uvindex >= 8 && uvindex <= 10) {
+        return 'Very High';
     }
 
-    if (windspeed >= 6 && windspeed <= 7) {
-        return 4;
-    }
-
-    if (windspeed >= 8 && windspeed <= 10) {
-        return 5;
-    }
-
-    if (windspeed >= 11 && windspeed <= 13) {
-        return 6;
-    }
-
-    if (windspeed >= 14 && windspeed <= 17) {
-        return 7;
-    }
-
-    if (windspeed >= 18 && windspeed <= 20) {
-        return 8;
-    }
-
-    if (windspeed >= 21 && windspeed <= 24) {
-        return 9;
-    }
-
-    if (windspeed >= 25 && windspeed <= 28) {
-        return 10;
-    }
-
-    if (windspeed >= 29 && windspeed <= 32) {
-        return 11;
-    }
-
-    if (windspeed >33) {
-        return 12;
+    if (uvindex > 11) {
+        return 'Extreme';
     }
 }
 
-function setWindDirection(degrees, deg) {
+/* -------------------- Convert wind data -------------------- */
+
+function getWindForce(windspeed) {
+    windspeed = Math.round(windspeed);
+
+    if (windspeed === 0) {
+        return {
+            beaufort: 0,
+            description: 'Calm'
+        };
+    }
+
+    if (windspeed === 1) {
+        return {
+            beaufort: 1,
+            description: 'Light air'
+        };
+    }
+
+    if (windspeed >= 2 && windspeed <= 3) {
+        return {
+            beaufort: 2,
+            description: 'Light breeze'
+        };
+    }
+
+    if (windspeed >= 4 && windspeed <= 5) {
+        return {
+            beaufort: 3,
+            description: 'Gentle breeze'
+        };
+    }
+
+    if (windspeed >= 6 && windspeed <= 7) {
+        return {
+            beaufort: 4,
+            description: 'Moderate breeze'
+        };
+    }
+
+    if (windspeed >= 8 && windspeed <= 10) {
+        return {
+            beaufort: 5,
+            description: 'Fresh breeze'
+        };
+    }
+
+    if (windspeed >= 11 && windspeed <= 13) {
+        return {
+            beaufort: 6,
+            description: 'Strong breeze'
+        };
+    }
+
+    if (windspeed >= 14 && windspeed <= 17) {
+        return {
+            beaufort: 7,
+            description: 'Moderate gale'
+        };
+    }
+
+    if (windspeed >= 18 && windspeed <= 20) {
+        return {
+            beaufort: 8,
+            description: 'Fresh gale'
+        };
+    }
+
+    if (windspeed >= 21 && windspeed <= 24) {
+        return {
+            beaufort: 9,
+            description: 'Strong gale'
+        };
+    }
+
+    if (windspeed >= 25 && windspeed <= 28) {
+        return {
+            beaufort: 10,
+            description: 'Storm'
+        };
+    }
+
+    if (windspeed >= 29 && windspeed <= 32) {
+        return {
+            beaufort: 11,
+            description: 'Violent storm'
+        };
+    }
+
+    if (windspeed >33) {
+        return {
+            beaufort: 12,
+            description: 'Hurricane'
+        };
+    }
+}
+
+function setWindDirection(degrees) {
     const step = 11.25;
 
     // North
     if ((degrees >= (0 - step) && degrees < (0 + step)) || degrees >= (360 - step)) {
-        return deg ? degrees + '°' : 'N';
+        return 'N';
     }
 
     // North-North-East
     if (degrees > (22.5 - step) && degrees < (22.5 + step)) {
-        return deg ? degrees + '°' : 'NNE';
+        return 'NNE';
     }
 
     // North-East
     if (degrees > (45 - step) && degrees < (45 + step)) {
-        return deg ? degrees + '°' : 'NE';
+        return 'NE';
     }
 
     // East-North-East
     if (degrees > (67.5 - step) && degrees < (67.5 + step)) {
-        return deg ? degrees + '°' : 'ENE';
+        return 'ENE';
     }
 
     // East
     if (degrees > (90 - step) && degrees < (90 + step)) {
-        return deg ? degrees + '°' : 'E';
+        return 'E';
     }
 
     // East-South-East
     if (degrees > (112.5 - step) && degrees < (112.5 + step)) {
-        return deg ? degrees + '°' : 'ESE';
+        return 'ESE';
     }
 
     // South-East
     if (degrees > (135 - step) && degrees < (135 + step)) {
-        return deg ? degrees + '°' : 'SE';
+        return 'SE';
     }
 
     // South-South-East
     if (degrees > (157.5 - step) && degrees < (157.5 + step)) {
-        return deg ? degrees + '°' : 'SSE';
+        return 'SSE';
     }
 
     // South
     if (degrees > (180 - step) && degrees < (180 + step)) {
-        return deg ? degrees + '°' : 'S';
+        return 'S';
     }
 
     // South-South-West
     if (degrees > (202.5 - step) && degrees < (202.5 + step)) {
-        return deg ? degrees + '°' : 'SSW';
+        return 'SSW';
     }
 
     // South-West
     if (degrees > (225 - step) && degrees < (225 + step)) {
-        return deg ? degrees + '°' : 'SW';
+        return 'SW';
     }
 
     // West-South-West
     if (degrees > (247.5 - step) && degrees < (247.5 + step)) {
-        return deg ? degrees + '°' : 'WSW';
+        return 'WSW';
     }
 
     // West
     if (degrees > (270 - step) && degrees < (270 + step)) {
-        return deg ? degrees + '°' : 'W';
+        return 'W';
     }
 
     // West-North-West
     if (degrees > (292.5 - step) && degrees < (292.5 + step)) {
-        return deg ? degrees + '°' : 'WNW';
+        return 'WNW';
     }
 
     // North-West
     if (degrees > (315 - step) && degrees < (315 + step)) {
-        return deg ? degrees + '°' : 'NW';
+        return 'NW';
     }
 
     // North-North-West
     if (degrees > (337.5 - step) && degrees <= (337.5 + step)) {
-        return deg ? degrees + '°' : 'NNW';
+        return 'NNW';
     }
 }
 
