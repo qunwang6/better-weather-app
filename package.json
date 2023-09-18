@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Better Weather App is a modern weather app with a simple yet beautiful UI. Made with ♥ by Bent Gebelein, powered by openweathermap.org",
   "main": "index.html",
+  "privte": true,
   "scripts": {
-    "create-copy": "cpy . '!style.scss' '../../public' --cwd=app",
-    "minify-js": "uglifyjs public/script.js --compress drop_console=true --output public/script.js",
+    "create-copy": "cpy . '!style.scss' '!js/*.js' '../../public' --cwd=app",
+    "minify-js": "uglifyjs public/bundle.js --compress drop_console=true --output public/bundle.js",
     "minify-html": "html-minifier --input-dir public --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html",
-    "build": "npm run create-copy && npm run minify-js && npm run minify-html"
+    "build": "webpack && npm run create-copy && npm run minify-js && npm run minify-html"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,9 @@
     "html-minifier": "^4.0.0",
     "leaflet": "^1.9.4",
     "uglify-js": "^3.17.4"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
