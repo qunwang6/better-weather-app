@@ -2,9 +2,9 @@ import {getHoursAndMinutes, getDate, getDay} from "./js/datetime.js";
 import {mapPercentageValue, getUvIndexDescription} from "./js/sun.js";
 import {getWindForce, setWindDirection} from "./js/wind.js";
 import {setWeatherMedia} from "./js/assets.js";
-import {triggerToast} from "./js/toast.js";
 import {triggerPwaPopUp} from "./js/pwa.js";
 import {setMap} from "./js/map.js";
+import {triggerToast} from "./js/toast.js";
 window.triggerToast = triggerToast;
 
 /* -------------------- OpenWeatherMap APi Key  -------------------- */

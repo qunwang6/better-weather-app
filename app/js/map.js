@@ -1,4 +1,5 @@
 import {apiKey} from '../script.js';
+import * as L from "../../node_modules/leaflet/dist/leaflet-src.esm.js";
 
 const zoomLvl = 9;
 
