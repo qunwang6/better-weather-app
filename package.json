@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "create-copy": "cpy . '!style.scss' '../../public' --cwd=app",
-    "minify-js": "uglifyjs public/script.js --compress --mangle --toplevel --output public/script.js",
+    "minify-js": "uglifyjs public/script.js --compress --output public/script.js",
     "minify-html": "html-minifier --input-dir public --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html",
     "build": "npm run create-copy && npm run minify-js && npm run minify-html"
   },
