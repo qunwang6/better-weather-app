@@ -9,7 +9,7 @@ window.triggerToast = triggerToast;
 
 /* -------------------- OpenWeatherMap APi Key  -------------------- */
 
-export const apiKey = 'ce74a593068c612e5bc8451997f2fb81';
+export const apiKey = '6a77aa86d3e78ed643e5dc924862ffaa';
 
 /* -------------------- Get data from local storage  -------------------- */
 
